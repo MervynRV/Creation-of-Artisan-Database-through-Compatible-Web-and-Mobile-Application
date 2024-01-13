@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Our CSS -->
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <title>Artist Login</title>
+  <link rel="shortcut icon" href="images/logobgl.png" type="images/x-icon">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding-top: 50px;
+      background-color: #e9edc9;
+    }
+
+    .form-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 600px;
+      height: auto;
+      background-color: #fefae0;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+    .form-container .form-wrapper {
+      width: 100%; /* Update width to 100% */
+    }
+
+    .form-container .password-section {
+      display: none; /* Initially hide the password section */
+    }
+
+    .form-container .picture {
+      width: 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+    <div class="form-container">
+      <div class="form-wrapper">
+        <!-- Your form elements -->
+        <form action="otp.php" method="post" id="loginForm">
+          <div class="mb-3">
+            <label for="number" class="form-label">Phone</label>
+            <input type="number" name="Phone" class="form-control" id="number" placeholder="Enter your Phone number" required>
+          </div>
+          <div class="mb-3 password-section">
+            <label for="sellerPassword" class="form-label">OTP</label>
+            <input type="password" name="Password" class="form-control" id="sellerPassword" placeholder="Enter " required>
+          </div>
+  
+          <button type="button" id="nextButton" class="btn btn-primary" onclick="generateAndSendOTP()">Send OTP</button>
+          <button type="submit" class="btn btn-primary" style="display:none;" id="submitButton">Submit OTP</button>
+  
+          <div class="a-row">
+            Not yet Registered?
+            <a class="a-link-emphasis" href="artistsignup.html">
+              Signup
+            </a>
+          </div>
+        </form>
+      </div>
+      <div class="picture">
+        <img src="images/su2.png" alt="Your Picture" style="max-width: 100%; max-height: 100%;">
+      </div>
+    </div>
+  
+    <!-- Add this script tag to your HTML, or include it in your existing script section -->
+    <script>
+      function generateAndSendOTP() {
+        // Generate a random 6-digit OTP
+        var otp = Math.floor(100000 + Math.random() * 900000);
+  
+        // Show the password section
+        document.querySelector('.password-section').style.display = 'block';
+  
+        // Hide the phone section
+        document.querySelector('.mb-3').style.display = 'none';
+  
+        // Hide the Next button
+        document.getElementById('nextButton').style.display = 'none';
+  
+        // Show the Submit button
+        document.getElementById('submitButton').style.display = 'block';
+  
+        // Set the generated OTP to the Password field
+        document.getElementById('sellerPassword').value = otp;
+      }
+    </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
